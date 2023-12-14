@@ -1,0 +1,214 @@
+from datetime import datetime
+
+#assigning a colour variable to the value
+purple = "\033[95m"
+cyan = "\033[96m"
+yellow = "\033[93m"
+red = "\033[91m"
+bold = "\033[1m"
+normal = "\33[m"
+
+#using the nested dictionary
+stocks = {
+    "AA": {"name": "Delicious Cookies", "price": 5, "quantity": 4},
+    "AB": {"name": "Yummy Mix Nuts", "price": 7, "quantity": 5},
+    "AC": {"name": "Crunchy Chips", "price": 4, "quantity": 9},
+    "AD": {"name": "Soft Bread", "price": 3, "quantity": 5},
+    "BA": {"name": "Refreshing Water", "price": 1, "quantity": 5},
+    "BB": {"name": "Creamy Coffee", "price": 2, "quantity": 4},
+    "BC": {"name": "Luscious Juice", "price": 3, "quantity": 9},
+    "BD": {"name": "Rich Milk", "price": 2, "quantity": 9},
+    "BE": {"name": "Fizzy Soft Drink", "price": 5, "quantity": 0},
+    "BF": {"name": "Relaxing Tea", "price": 2, "quantity": 5},
+    "CA": {"name": "Luxurious Kitkat", "price": 2, "quantity": 6},
+    "CB": {"name": "Light Flake", "price": 3, "quantity": 4},
+    "CC": {"name": "Vibrant Bounty", "price": 1, "quantity": 7},
+    "CD": {"name": "Elegant Flute", "price": 2, "quantity": 9},
+}
+#defining a function and naming it
+def stock_display():
+    stock_display = f'''
+    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    ||                                                                                                  ||
+    ||       {normal}{yellow} █░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   ▀█▀ █▀█   █▀ ▀█▀ █▀█ █▀█ ▄▄ █▄░█ ▄▄ █▀▀ █▀█{normal}             ||
+    ||       {normal}{yellow} ▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   ░█░ █▄█   ▄█ ░█░ █▄█ █▀▀ ░░ █░▀█ ░░ █▄█ █▄█{normal}             ||
+    ||                                      𝗩𝗲𝗻𝗱𝗶𝗻𝗴   𝗠𝗮𝗰𝗵𝗶𝗻𝗲                                           ||
+    ||                                                                                                  ||
+    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||        
+    ||                                                                                                  ||
+    ||       =============================---- {normal}{purple + bold}ｓｎａｃｋｓ {normal}-----==============================         ||
+    ||                                                                                                  ||
+    ||                                               Cost          Stock                                ||
+    ||        {bold+yellow}    AA      {normal}Cookies            ---    5 aed   ---      {stocks["AA"]["quantity"]}                                  ||
+    ||        {bold+yellow}    AB      {normal}Mix Nuts           ---    7 aed   ---      {stocks["AB"]["quantity"]}                                  ||
+    ||        {bold+yellow}    AC      {normal}Chips              ---    4 aed   ---      {stocks["AC"]["quantity"]}                                  ||
+    ||        {bold+yellow}    AD      {normal}Bread              ---    3 aed   ---      {stocks["AD"]["quantity"]}                                  ||
+    ||                                                                                                  ||
+    ||       ===========================------ {normal}{purple + bold}ｄｒｉｎｋｓ {normal}------==============================        ||
+    ||                                                                                                  ||
+    ||        {bold+yellow}    BA      {normal}Water              ---    1 aed   ---      {stocks["BA"]["quantity"]}                                  ||   
+    ||        {bold+yellow}    BB      {normal}Coffee             ---    2 aed   ---      {stocks["BB"]["quantity"]}                                  ||
+    ||        {bold+yellow}    BC      {normal}Juice              ---    3 aed   ---      {stocks["BC"]["quantity"]}                                  ||
+    ||        {bold+yellow}    BD      {normal}Milk               ---    2 aed   ---      {stocks["BD"]["quantity"]}                                  ||
+    ||        {bold+yellow}    BE      {normal}Soft Drink         ---    5 aed   ---      {stocks["BE"]["quantity"]}                                  ||
+    ||        {bold+yellow}    BF      {normal}Tea                ---    2 aed   ---      {stocks["BF"]["quantity"]}                                  ||
+    ||                                                                                                  ||
+    ||       ==========================-------- {normal}{purple + bold}ｓｗｅｅｔｓ {normal}--------============================       ||
+    ||                                                                                                  ||
+    ||        {bold+yellow}    CA      {normal}Kitkat             ---    2 aed   ---      {stocks["CA"]["quantity"]}                                  ||
+    ||        {bold+yellow}    CB      {normal}Flake              ---    3 aed   ---      {stocks["CB"]["quantity"]}                                  ||
+    ||        {bold+yellow}    CC      {normal}Bounty             ---    1 aed   ---      {stocks["CC"]["quantity"]}                                  ||
+    ||        {bold+yellow}    CD      {normal}Flute              ---    2 aed   ---      {stocks["CD"]["quantity"]}                                  ||
+    ||                                                                                                  ||
+    ||                                                                                                  ||
+    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    '''
+    #loop
+    return stock_display
+
+#defining the function and naming it
+def greeting():
+    print(stock_display())#shows the vending machine
+    print(f"ʕ•́ᴥ•̀ʔっ ♥ {bold+yellow}Hi there!{normal}♥")#greeting the buyer
+
+#function
+def insert_cash():
+    while True:
+        try: #if the input is valid
+            pay = int(input("\nPlease insert an amount of money:\t"))#getting the input from the buyer
+            print(f"You have inserted {bold+cyan}{pay} aed{normal}.")#showing the buyer how much they have input
+            return pay #goes back to getting the input from the buyer
+        except ValueError: #if the buyer did not enter a number
+            print(f"(╥﹏╥) {red}The input is invalid. Please try again.{normal}") #telling the buyer that what has been input is invalid
+
+#using a parameter
+def purchase(item_code ,  selection):
+    #applying the python assignment operator with if statement
+    if selection["quantity"] > 0: #if the item of quantity is more than none
+        if pay >= selection["price"]: #if the input is more or equals to the price
+            change = pay - selection["price"] #minusing the selected price item from the input cash
+            selection["quantity"] -= 1 #minus one quantity from the stocks
+            print(f"Remaining money: {bold+cyan}{abs(change)} aed{normal}")#giving the buyer their change back
+            print(f'\n{bold}The {selection["name"]} is being dispensed ->>>{normal}') #telling the buyer that their item is being dispense
+            print(f'There is {selection["quantity"]} {selection["name"]} left') #telling the buyer the quantity left of the item
+            return change #the end of the function and will return to the part the change will be minus from the price of the item
+        else: #the second output
+            #if the amount of money if not enough
+            print(f'(╥﹏╥) {red}I"m sorry, your money is not enough.{normal}')#this message will show is the money is insufficient
+            #buyers" get to chose if they want to insert more money or cancel the payment
+            more = int(input(f'Please insert {cyan+bold}{selection["price"] - pay} aed{normal} more or 0 to cancel purchase:\t'))
+            if more >= selection["price"] - pay: #if the buyer inserts more money
+                #the price of the item minus the inserted money
+                change = more - (selection["price"]) + pay #calcute the change
+                selection["quantity"] -=1 #minus one quantity from the stocks
+                #the item will be dispensed
+                print(f'\n{bold}The {selection["name"]} is being dispensed ->>>{normal}')
+                #telling the buyer how of the quantity of the item is left
+                print(f'There is {selection["quantity"]} of {selection["name"]} left')
+                #telling the buyer that they have added more amount of payment than the price
+                print(f"You have inserted an additional {bold+cyan}{abs(change)} aed{normal}")
+                return change
+            else: #if the buyer will cancel the purchase
+                print(f"\nPurchase canceling. Here is your {bold+cyan}{pay} aed{normal} back")#giving them back their money
+                print(f"ʕ•́ᴥ•̀ʔっ ♥ {yellow}Please come again!{normal} ♥")#farewell greeting
+                exit() #exits the function if the number input number is lower than needed
+    else:
+        print("_______________________________________________")
+        print(f'(╥﹏╥) {red}I"m sorry, the {selection["name"]} {red}is all out of stock.{normal}')
+        print(f"Here is your {cyan+bold}{pay} aed{normal} back")
+        print("_______________________________________________")
+        print(f'ʕ•́ᴥ•̀ʔっ ♥ {yellow}Please come again!{normal} ♥')#farewell greeting
+        return 0 #if stock is all our, return the buyers" money
+
+def recommendation():
+    #recommending the buyer what to buy
+    print("\nI recommend buying:")
+    for code, item in stocks.items(): #calls the nested dictionary
+        if code != "":
+            #shows the item code, the item, and the price
+            print(f'{bold}{code.upper()}: {cyan+bold}{item["name"]:<6}{normal} --- {cyan+bold}{item["price"]} aed{normal} --- stock:{cyan+bold}{item["quantity"]}{normal}')
+
+def purchase_recommendation():
+    #asking the buyer if they would like to purchase the recommended item
+    choice = input(f"\nWould you like to purchase a recommended item? {cyan+bold}Yes{normal} or {cyan+bold}No{normal}:\t").lower()
+    
+    #if the buyer answer the yes to the value of the variable "choice"
+    if choice == "yes": #if they buyer answers yes
+        item_choice = input("Please enter the item code:\t").upper() #asking the buyer to enter the code of the item
+        if item_choice in stocks and stocks[item_choice]["quantity"] != 0: #if the item still has more quantity
+            recommendation = stocks[item_choice] #if the buyer chose the recommendation
+            print(f'You have purchased {bold+cyan}{recommendation["name"]}{normal}.')
+            print(f'{bold}The {recommendation["name"]} is being dispensed ->>>{normal}')
+            recommendation["quantity"] -= 1 #minus the selected item from the nested dictionary
+            #telling the buyer how of the quantity of the item is left
+            print(f'There is {recommendation["quantity"]} of {recommendation["name"]} left')
+            return recommendation #goes back to the 
+        else:
+            print(f'(╥﹏╥) {bold+red}The item is out of stock{normal}')#telling the buyer the item is out of stock
+            return None #does not return to anything
+    else:
+        #choice is not equals to yes as an answer
+        #if the buyers' answer is no
+        print("\nThank you for buying, enjoy!")#thankful greeting
+        return None
+    
+#the main function
+while True:
+    greeting() #prints the greeting
+    pay = insert_cash() #prints whats under the function of the insert_cash
+
+    #asking the buyer
+    select = input("\nWhat would you like to purchase?\t").upper() #getting input from buyer
+
+    #checking if the key is in the nested dictionary
+    if select in stocks:
+        selection = stocks[select] #the item the buyer select
+        #showing the buyer what they bought and how much it cost
+        print(f'\nYou chose the {bold+cyan}{selection["name"]}{normal}. That cost {bold+cyan}{selection["price"]} aed{normal}')
+        change = purchase(select, selection)
+
+        if change >= 0:
+            recommendation() #printing the function under recommendation 
+            recommendation_item = purchase_recommendation()#printing the function under purchasing recommendation
+
+            #if the buyer purchase a recommendation
+            if recommendation_item is not None: #if they chose one of the recommendation
+                #adding the cost of the recommendation
+                spent = recommendation_item["price"] + selection["price"]
+                #formating the time and date
+                dnt = datetime.today().strftime("%m/%d/%y %H:%M") #the date shows first follow by the time
+                #printing the total purchase along with the time, and date
+                print("_______________________________________________")
+                #using triple quotation
+                change2 = change - selection["price"] #minus the previous
+                print(f'''The item you have purchased:
+1. {cyan+bold}{recommendation_item["name"]}{normal} - {cyan+bold}{recommendation_item["price"]} aed{normal}
+2. {cyan+bold}{selection["name"]}{normal} - {cyan+bold}{selection["price"]} aed{normal} 
+You spent a total of {cyan+bold}{spent} aed{normal} on {cyan+bold}{dnt}{normal} ''') #the total amonut the buyer spent
+                print(f"Here is your change: {cyan+bold}{change2} aed{normal}")#giving the change back
+                print("_______________________________________________")
+                print(f"ʕ•́ᴥ•̀ʔっ ♥ {yellow}Please come again!{normal} ♥")#farewell greeting
+
+            else:#if the buyer did not purchase any of the recommendation
+                recommendation_item is None
+                spent = selection["price"]#the price of the select item
+                dnt = datetime.today().strftime("%m/%d/%y at %H:%M") #the date shows first follow by the time
+                print("_______________________________________________")
+                #using triple quotation
+                print(f'''The item you have purchased:
+1. {cyan+bold}{selection["name"]}{normal} - {cyan+bold}{selection["price"]} aed{normal} 
+You spent a total of {cyan+bold}{spent} aed{normal} on {cyan+bold}{dnt}{normal} ''') #the total amonut the buyer spent
+                print(f"Here is your change: {cyan+bold}{change} aed{normal}")#giving the change back
+                print("_______________________________________________")
+                print(f"ʕ•́ᴥ•̀ʔっ ♥ {yellow}Please come again!{normal} ♥")#farewell greeting
+        
+        #asking the buyer if they would like to buy again
+        buyer = input(f"\nWould you like to buy again? {cyan+bold}yes{normal} or {cyan+bold}no{normal}:\t")
+        #if they do not want to continue
+        if buyer.lower() != "yes":
+            #exiting the main loop
+            print(f"ʕ•́ᴥ•̀ʔっ ♥ {yellow}Please come again!{normal} ♥")#farewell greeting 
+            break
+
+    else:
+        print(f'ʕ•́ᴥ•̀ʔっ ♥ {red}I"m sorry, that code is invalid,{normal} {yellow}have a nice day!{normal}♥')#farewell greeting
